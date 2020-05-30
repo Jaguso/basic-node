@@ -46,6 +46,11 @@ const url = require('url');
 //////////////////////////////////////
 // SERVER
 
+
+const data =  fs.readFileSync(`${__dirname}/dev-data/data.json`, 'utf-8' );
+const dataObj = JSON.parse(data);
+
+
 const server = http.createServer((req, res) => {
   const pathName = req.url;
   if (pathName === '/' || pathName === '/overview') {
@@ -54,7 +59,6 @@ const server = http.createServer((req, res) => {
     res.end('This is the PRODUCT');
   } else if (pathName === '/api') {
     fs.readFile(`${__dirname}/dev-data/data.json`, 'utf-8', (err, data) => {
-      const productData = JSON.parse(data);
       res.writeHead(200, { 'Content-type': 'application/json' }); // se tiene que poner el tipo de dato que se envía en el header
       res.end(data);
     });

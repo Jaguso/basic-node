@@ -54,13 +54,26 @@ const getDogPic = async () => {
   return '2: READY'
 }
 
-console.log('1: Will get dog pics!');
-getDogPic()
-  .then(x => {
-    console.log(x);
+// Create a function and call it right away
+(async () => {
+  try {
+    console.log('1: Will get dog pics!');
+    const x = await getDogPic();
+    console.log(x)
     console.log('3: Done getting dog pics!');
-  })
-  .catch(err => {
+  } catch (err) {
     console.log('ERROR')
-  });
+  }
+})();
+
+
+// console.log('1: Will get dog pics!');
+// getDogPic()
+//   .then(x => {
+//     console.log(x);
+//     console.log('3: Done getting dog pics!');
+//   })
+//   .catch(err => {
+//     console.log('ERROR')
+//   });
 
